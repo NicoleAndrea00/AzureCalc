@@ -1,0 +1,40 @@
+﻿@model AzureService
+
+<h2>Azure Cost Calculator</h2>
+
+<style>
+    form div {
+        margin-bottom: 15px;
+    }
+    label {
+        display: inline-block;
+        width: 160px;
+    }
+    input, select {
+        padding: 5px;
+        width: 200px;
+    }
+    button {
+        margin-top: 10px;
+        padding: 8px 20px;
+    }
+</style>
+
+<form asp-action="Index" method="post">
+    <div>
+        <label asp-for="InstanceSize"></label>
+        <select asp-for="InstanceSize"
+                asp-items="@(new SelectList(ViewBag.InstanceSize))">
+            <option value="">-- Select Size --</option>
+        </select>
+        <span asp-validation-for="InstanceSize" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="NumInstances"></label>
+        <input asp-for="NumInstances" type="number" />
+        <span asp-validation-for="NumInstances" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Calculate Cost</button>
+</form>

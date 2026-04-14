@@ -1,0 +1,14 @@
+﻿<h2>Azure Service Cost Summary</h2>
+
+<p><strong>Instance Size:</strong> @TempData["InstanceSize"]</p>
+<p><strong>Number of Instances:</strong> @TempData["NumInstances"]</p>
+<p>
+    <strong>Estimated Yearly Cost:</strong>
+    $@String.Format("{0:F2}", Convert.ToDecimal(TempData["YearlyCost"]))
+</p>
+
+<p>@(DateTime.IsLeapYear(DateTime.Now.Year) ? "Calculated for a leap year (366 days)" : "Calculated for a standard year (365 days)")</p>
+
+<form asp-action="Index" asp-controller="Azure">
+    <button type="submit">Calculate Another</button>
+</form>
